@@ -83,7 +83,7 @@ return string.replaceAll(" ", "-").toLowerCase()
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
 //take an input string and one character and check if the string starts with that character
-if (string[0] == char){
+if (string[0].toLowerCase() === char.toLowerCase()){
     //return true if it does
     return true
     //else return false
@@ -108,13 +108,11 @@ if (string[0] == char){
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
 //take the input string and compare the last element to a single character
-if (string[string.length] == char){
+if (string[string.length -1].toLowerCase() === char.toLowerCase()){
      //if they match then return true
     return true
     //else if they don't match return false   
 } else return false
-   
-
 
     // YOUR CODE ABOVE HERE //
 }
@@ -126,8 +124,8 @@ if (string[string.length] == char){
  */
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
+//return the two strings concatenated 
+return stringOne.concat(stringTwo)
 
     // YOUR CODE ABOVE HERE //
 }
@@ -145,7 +143,8 @@ function concat(stringOne, stringTwo) {
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
-
+//take in any strings and return them joined inside an array
+return args.join('')
 
     // YOUR CODE ABOVE HERE //
 }
@@ -161,7 +160,11 @@ function join(stringOne, stringTwo) {
  */
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+//compare the length of the strings
+if (stringOne.length > stringTwo.length){
+    return stringOne
+} else return stringTwo
+    //return the string that is longer
 
 
     // YOUR CODE ABOVE HERE //
@@ -176,7 +179,17 @@ function longest(stringOne, stringTwo) {
  */
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+//compare if stringOne is first in alphabetical order
+if (stringTwo > stringOne){
+   //if so return 1
+    return 1
+}
+//check if stringTwo is first in alphabetical order
+else if (stringTwo < stringOne){
+        //if so return -1
+    return - 1
+} else return 0
+    //if not return 0
 
 
     // YOUR CODE ABOVE HERE //
@@ -192,7 +205,17 @@ function sortAscending(stringOne, stringTwo) {
  */
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+//compare if stringOne is first in alphabetical order
+if (stringOne > stringTwo){
+    //if so return 1
+     return 1
+ }
+ //check if stringTwo is first in alphabetical order
+ else if (stringTwo > stringOne){
+         //if so return -1
+     return - 1
+ } else return 0
+     //if not return 0
 
 
 
