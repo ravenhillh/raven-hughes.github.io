@@ -21,8 +21,15 @@
 
 function reverseString(input) {
     // YOUR CODE GOES BELOW HERE //
-    
-    
+    //create a variable to store the new string
+    let newString = ""
+    //create a loop to pull the input out and reverse it
+    for (let i = input.length-1; i >= 0 ; i --){
+      //add each element into the new string
+      newString += input[i]
+    }
+    //return the string
+    return newString
     
     
     // YOUR CODE GOES ABOVE HERE //
