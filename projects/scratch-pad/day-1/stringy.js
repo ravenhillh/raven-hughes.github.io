@@ -61,7 +61,9 @@ return string.toUpperCase()
 function toDashCase(string) {
     // YOUR CODE BELOW HERE //
 //take a string and return it in dash case
+console.log(string)
 
+return string.replaceAll(" ", "-").toLowerCase()
 
     // YOUR CODE ABOVE HERE //
 }
@@ -80,9 +82,14 @@ function toDashCase(string) {
  */
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
+//take an input string and one character and check if the string starts with that character
+if (string[0] == char){
+    //return true if it does
+    return true
+    //else return false
+} else {
+    return false}
     
-
     // YOUR CODE ABOVE HERE //
 }
 
@@ -100,7 +107,13 @@ function beginsWith(string, char) {
  */
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
+//take the input string and compare the last element to a single character
+if (string[string.length] == char){
+     //if they match then return true
+    return true
+    //else if they don't match return false   
+} else return false
+   
 
 
     // YOUR CODE ABOVE HERE //
