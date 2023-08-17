@@ -13,7 +13,12 @@
  */
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
+
+    //returning a function that tests whether a given value is greater than the base
+    return function(val){
+        //checking if value is greater than the base
+        if (val > base === true)
+    }
     
     
     
@@ -27,7 +32,11 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
+    //returning a function that tests whether a given value is greater than the base
+    return function(val){
+        //checking if value is greater than the base
+        if (val < base === true)
+    }
     
     
     
@@ -41,9 +50,13 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
+//returning a function that tests whether a given string starts with the startsWith parameter
+    return function(str){
+        //checking if value is greater than the base
+        if (str[0] === startsWith)
+    }
     
-    
-    
+
     
     // YOUR CODE ABOVE HERE //
 }
@@ -55,7 +68,11 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    
+//return a function that tests whether a string ends with the endsWith parameter
+    return function(str){
+        //checking if string starts with same character
+        if (str[str.lenght-1] === endsWith)
+    }    
     
     
     
@@ -71,7 +88,7 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
-    
+//create a loop to pull string data into an array or object and modify
     
     
     
