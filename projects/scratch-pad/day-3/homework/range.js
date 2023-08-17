@@ -23,7 +23,21 @@
  */
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
-    
+    //create a variable to store the values and return
+    let array1 = []
+    //create an if statement to see which direction to put values
+    if (start > end){
+    //create a loop to get numbers
+    for (var i = start; i >= end; i--){
+        array1.push(i)
+    }    return array1
+    } else {
+        //create a loop to get numbers
+        for (var i = start; i <= end ; i++){
+            array1.push(i)
+        }    return array1
+    }
+   
     
     
     
