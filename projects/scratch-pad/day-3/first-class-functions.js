@@ -15,9 +15,9 @@ function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
 
     //returning a function that tests whether a given value is greater than the base
-    return function(val){
+    return function(base, val){
         //checking if value is greater than the base
-        if (val > base === true)
+        if (val > base) {return true}
     }
     
     
@@ -33,9 +33,9 @@ function createGreaterThanFilter(base) {
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
     //returning a function that tests whether a given value is greater than the base
-    return function(val){
-        //checking if value is greater than the base
-        if (val < base === true)
+    return function(base, val){
+        //checking if value is less than the base
+        if (val < base === true) return true
     }
     
     
@@ -51,9 +51,9 @@ function createLessThanFilter(base) {
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
 //returning a function that tests whether a given string starts with the startsWith parameter
-    return function(str){
-        //checking if value is greater than the base
-        if (str[0] === startsWith)
+    return function(startsWith, string){
+        //test if string element 0 equals startsWith character
+        if (string[0] === startsWith) return true
     }
     
 
@@ -69,9 +69,9 @@ function createStartsWithFilter(startsWith) {
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
 //return a function that tests whether a string ends with the endsWith parameter
-    return function(str){
-        //checking if string starts with same character
-        if (str[str.lenght-1] === endsWith)
+    return function(endsWith, string){
+        //checking if string ends with same character
+        if (string[string.length-1] === endsWith) return true
     }    
     
     
@@ -88,8 +88,12 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
-//create a loop to pull string data into an array or object and modify
-    
+// create a storage variable for new strings
+  let newStrings = []
+    //create a loop to pull string data into an array or object and modify
+  for (var i = 0; i < strings.length; i ++){
+    newStrings.push(modify(strings[i]))
+  } return newStrings
     
     
     // YOUR CODE ABOVE HERE //
@@ -106,8 +110,14 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    
-    
+//create a loop to check each string in the array
+  for (var i = 0; i < strings.length; i ++){
+    //use the passed function to test the string in some way
+   if (test(strings[i]) === true){
+   //return true if they match
+  return true
+  } 
+  }    
     
     
     // YOUR CODE ABOVE HERE //

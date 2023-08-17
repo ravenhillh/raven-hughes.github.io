@@ -38,7 +38,7 @@ function isObject(value) {
         return false
     } else if (typeof value === 'object'){
         return true
-    }
+    } else return false
     
     
     
@@ -57,13 +57,13 @@ function isCollection(value) {
      //use an if statement to test if the value is an object or not an object
      if (value instanceof Date === true){
         return false
-     } else if (value === null){
+    } else if (value === null){
         return false
-     } else if (Array.isArray(value) === true){
+    } else if (Array.isArray(value) === true){
         return true
     } else if (typeof value === 'object'){
         return true
-    } 
+    } else return false
     
     
     
