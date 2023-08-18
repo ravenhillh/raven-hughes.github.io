@@ -68,9 +68,9 @@ function makeContactList() {
         //find the contact with a loop
         for (var i = 0; i < contacts.length; i ++){
             //use a conditional statement to compare names 
-                if (contact === contacts[i].nameFirst + " " + contacts[i].nameLast){
+                if (contact === contacts[i]){
                     //delete the contact object
-                    delete contacts[i]
+                    contacts.splice(i, 1)
                 }
         }
     }, printAllContactNames: function(){

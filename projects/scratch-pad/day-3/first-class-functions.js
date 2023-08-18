@@ -11,13 +11,16 @@
  * return a Function that tests whether a given value is greater than the 
  * base.
  */
-let createGreaterThanFilter = function (base) {
+let createGreaterThanFilter = function(base) {
     // YOUR CODE BELOW HERE //
 
     //returning a function that tests whether a given value is greater than the base
     return function(value){
         //checking if value is greater than the base
-        if (value > base === true){return true}
+        if (value > base) {
+            return true
+        } else return false
+        
     } 
 
     
@@ -34,9 +37,11 @@ let createGreaterThanFilter = function (base) {
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
     //returning a function that tests whether a given value is greater than the base
-    return function(base, val){
+    return function(value){
         //checking if value is less than the base
-        if (val < base === true) return true
+        if (value < base){
+            return true
+        } else return false
     }
     
     
@@ -49,36 +54,32 @@ function createLessThanFilter(base) {
  * Function that tests whether a given String starts with the startsWith 
  * character.
  */
-function createStartsWithFilter(startsWith) {
+function createStartsWithFilter (startsWith) {
     // YOUR CODE BELOW HERE //
 //returning a function that tests whether a given string starts with the startsWith parameter
-    return function(startsWith, string){
+    return function(string){
         //test if string element 0 equals startsWith character
-        if (string[0] === startsWith) return true
-    }
-    
-
-    
-    // YOUR CODE ABOVE HERE //
+        if (string[0].toUpperCase() === startsWith.toUpperCase()) {
+            return true
+    } else return false 
 }
-
-/** 
- * Given a endsWith character, which will be a single character, return a 
- * Function that tests whether a given String ends with the endsWith 
- * character.
- */
-function createEndsWithFilter(endsWith) {
-    // YOUR CODE BELOW HERE //
-//return a function that tests whether a string ends with the endsWith parameter
-    return function(endsWith, string){
-        //checking if string ends with same character
-        if (string[string.length-1] === endsWith) return true
-    }    
-    
-    
-    
-    // YOUR CODE ABOVE HERE //
+}   /** 
+* Given a endsWith character, which will be a single character, return a 
+* Function that tests whether a given String ends with the endsWith 
+* character.
+*/
+function createEndsWithFilter (endsWith) {
+   // YOUR CODE BELOW HERE //
+   //creating a function to compare endsWith to the last value of a string
+   return function(string){
+    //test if string element 0 equals startsWith character
+    if (string[string.length -1].toUpperCase() === endsWith.toUpperCase()) {
+        return true
+} else return false
 }
+   // YOUR CODE ABOVE HERE //
+}
+    // YOUR CODE ABOVE HERE //
 
 /** 
  * Given an Array of Strings and a Function designed to modify a String, 
@@ -96,7 +97,7 @@ function modifyStrings(strings, modify) {
     newStrings.push(modify(strings[i]))
   } return newStrings
     
-    
+
     // YOUR CODE ABOVE HERE //
 }
 
@@ -111,19 +112,16 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-//create a loop to check each string in the array
-  for (var i = 0; i < strings.length; i ++){
-    //use the passed function to test the string in some way
-   if (test(strings[i]) === true){
-   //return true if they match
+//write a loop to go through the string array
+for (var i = 0; i < strings.length; i ++){
+// use a conditional to test them with the test function parameter
+    if (test(strings[i]) === false ) return false
+        else if (test(strings[i]) === true ){
   return true
-  } 
-  }    
-    
-    
+    } 
     // YOUR CODE ABOVE HERE //
 }
-
+}
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 if((typeof process !== 'undefined') &&
     (typeof process.versions.node !== 'undefined')) {
@@ -134,4 +132,4 @@ if((typeof process !== 'undefined') &&
     module.exports.createEndsWithFilter = createEndsWithFilter;
     module.exports.modifyStrings = modifyStrings;
     module.exports.allStringsPass = allStringsPass;   
-}
+       }   
