@@ -11,14 +11,15 @@
  * return a Function that tests whether a given value is greater than the 
  * base.
  */
-function createGreaterThanFilter(base) {
+let createGreaterThanFilter = function (base) {
     // YOUR CODE BELOW HERE //
 
     //returning a function that tests whether a given value is greater than the base
-    return function(base, val){
+    return function(value){
         //checking if value is greater than the base
-        if (val > base) {return true}
-    }
+        if (value > base === true){return true}
+    } 
+
     
     
     

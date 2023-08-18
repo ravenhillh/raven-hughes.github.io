@@ -78,7 +78,10 @@ function makeContactList() {
 //loop through the contact list and pull out names
 for (var i = 0; i < contacts.length; i ++){
     //combine the first name and last name properties and push them into a holding variable 
-        string1.push(contacts[i].nameFirst + contacts[i].nameLast + "/n")
+        if (i === contacts.length-1){
+            string1 += contacts[i].nameFirst + " " + contacts[i].nameLast
+        }
+        else string1 += contacts[i].nameFirst + " " + contacts[i].nameLast + "\n"
         } return string1
 
     }
