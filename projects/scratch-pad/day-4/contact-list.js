@@ -34,22 +34,54 @@
  */
 
 // YOUR CODE GOES BELOW HERE //
-function makeContact(id, nameFirst, nameLast) {
+let makeContact = function(id, nameFirst, nameLast) {
+ 
+    return {
+        id : id, nameFirst: nameFirst, nameLast: nameLast
+    }
 
-} 
-
-
+}
 function makeContactList() {
     /*
      * You need something here to hold contacts. See length api for a hint:
      */
-    var contacts;
+    var contacts = [];
     
     return {
         // we implemented the length api for you //
         length: function() {
             return contacts.length;
+        }, addContact: function(contact){
+            return contacts.push(contact)
+        }, findContact: function(fullName){
+//write a function that will take the fullName and look for a match in the contact list
+        //use a loop to look through contacts and check for match
+        for (var i = 0; i < contacts.length; i ++){
+//use a conditional statement to compare names 
+            if (fullName === contacts[i].nameFirst + " " + contacts[i].nameLast){
+                //return the contact object
+                return contacts[i]
+            }
+        } 
+        }, removeContact: function(contact){
+//match the contact argument with an object and delete that object
+        //find the contact with a loop
+        for (var i = 0; i < contacts.length; i ++){
+            //use a conditional statement to compare names 
+                if (contact === contacts[i].nameFirst + " " + contacts[i].nameLast){
+                    //delete the contact object
+                    delete contacts[i]
+                }
         }
+    }, printAllContactNames: function(){
+        let string1 = ""
+//loop through the contact list and pull out names
+for (var i = 0; i < contacts.length; i ++){
+    //combine the first name and last name properties and push them into a holding variable 
+        string1.push(contacts[i].nameFirst + contacts[i].nameLast + "/n")
+        } return string1
+
+    }
     }
 }
 
