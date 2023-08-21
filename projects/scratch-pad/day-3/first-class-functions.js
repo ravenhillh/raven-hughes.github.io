@@ -113,14 +113,18 @@ function modifyStrings(strings, modify) {
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
 //write a loop to go through the string array
+//create a true variable
+let truFact = true
 for (var i = 0; i < strings.length; i ++){
 // use a conditional to test them with the test function parameter
-    if (test(strings[i]) === false ) return false
-        else if (test(strings[i]) === true ){
-  return true
+    
+if (test(strings[i]) === false ) {
+    return false
+    }    else if (test(strings[i]) === true ){
+  truFact = true
     } 
     // YOUR CODE ABOVE HERE //
-}
+}return truFact
 }
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 if((typeof process !== 'undefined') &&

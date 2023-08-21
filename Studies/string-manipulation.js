@@ -1,0 +1,7 @@
+/**
+ * 
+ * STRING-MANIPULATION:
+ * 0.
+ * 1. (INCLUDE FOUR METHODS)
+ * 2.
+ */
