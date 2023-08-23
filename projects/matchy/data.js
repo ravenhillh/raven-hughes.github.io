@@ -74,13 +74,13 @@ console.log(animals)
 //////////////////////////////////////////////////////////////////////
 //friends data variable, I chose to use an array since it's a list of names
 friends = []
-var getRandom = function(){
+function getRandom(arr){
   //getting a random index from the animals array
-  return animals[Math.floor(Math.random() * animals.length)]
-  
+  return Math.floor(Math.random() * arr.length)
  } //pushing the name into the friends array
-  
-
+  //Using a random index from this function that you just created, get a random animal and add its `name` to `friends`.
+var num = getRandom(animals);
+console.log(num)
 console.log(friends)
 animals[2]["friends"]= friends
 
