@@ -12,24 +12,52 @@
 //////////////////////////////////////////////////////////////////////
 // Step 1 - Search ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+function search(animals, string){
+    for (var i = 0; i < animals.length; i ++){
+        if (string === animals[i]["name"]){
+            return animals[i]["name"]
+        } else return null
+    }
+}
 
 
 //////////////////////////////////////////////////////////////////////
 // Step 2 - Replace //////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
-
-
+//write a function replace
+function replace(animals, name, replacement){
+    for (var i = 0; i < animals.length; i ++){
+        if (name === animals[i]["name"]){
+            animals[i] = replacement
+}
+    }
+}
 //////////////////////////////////////////////////////////////////////
 // Step 3 - Remove ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
-
+function remove(animals, name){
+    for (var i = 0; i < animals.length; i ++){
+        if (name === animals[i]["name"]){
+            animals.splice(i, 1)
+}
+    }
+}
 
 //////////////////////////////////////////////////////////////////////
 // Step 4 - Add ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
+function add(animals, animal){
+    //Checks that the animal Object has a `name` property with a length > 0.
+    if (animal.name.length > 0){
+        //Checks that the animal Object has a `species` property with a length > 0.
+        if (animal.species.length > 0){
+            //Has a **unique** name, meaning no other animals have that name.
+        } for (var i = 0; i < animals.length; i ++){
+            //check that the new object name doesn't match one already on the array
+            if (animals[i].name === animal.name)
+        }
+    }
+}
 
 
 

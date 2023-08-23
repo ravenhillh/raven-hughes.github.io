@@ -74,9 +74,15 @@ console.log(animals)
 //////////////////////////////////////////////////////////////////////
 //friends data variable, I chose to use an array since it's a list of names
 friends = []
-var getRandom = function(arr1){
-  Math.floor(math.random() * 3)
-}
+var getRandom = function(){
+  //getting a random index from the animals array
+  return animals[Math.floor(Math.random() * animals.length)]
+  
+ } //pushing the name into the friends array
+  
+
+console.log(friends)
+animals[2]["friends"]= friends
 
 /**
  * Nice work! You're done Part 1. Pat yourself on the back and
