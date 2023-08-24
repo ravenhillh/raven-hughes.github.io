@@ -49,25 +49,25 @@ function remove(animals, name){
 //////////////////////////////////////////////////////////////////////
 // Step 4 - Add ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-function add(animals, animal){
-    //Checks that the animal Object has a `name` property with a length > 0.
-    if (animal.name.length > 0){
-        //Checks that the animal Object has a `species` property with a length > 0.
-        if (animal.species.length > 0){
-            //Has a **unique** name, meaning no other animals have that name.
-            for (var i = 0; i < animals.length; i ++){
-            //check that the new object name doesn't match one already on the array
-                if (animals[i].name !== animal["name"]){
-                 var newName = true  
-                } 
-            }     console.log(animals)
+function add(animals, animal){ 
+//Has a **unique** name, meaning no other animals have that name.
+    for (var i = 0; i < animals.length; i ++){
+    //check that the new object name doesn't match one already on the array
+        if (animals[i].name === animal["name"]){
+                 var newName = false  
         } 
+    } 
+        if (newName !== false){
+//Checks that the animal Object has a `name` property with a length > 0.
+          if (animal.name.length > 0){
+            //Checks that the animal Object has a `species` property with a length > 0.
+            if (animal.species.length > 0){
     //Adds this new Object to the `animals` Array, **only** if all the other conditions pass.
-     } if (newName === true){
-        animals.push(animal)
+                animals.push(animal)
+} 
 }
-}
-
+        }
+    }
 
 
 /**

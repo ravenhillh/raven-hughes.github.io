@@ -2,10 +2,14 @@
  * 
  * VARIABLES: 
  * 
- * 0. Variables are used to record data and attach it to a label to have access to that data.
+ * 0. Variables are used to record data and attach it to a label to have access to that data. They
+ * can store any type of data, such as string, number, boolean or objects. They are called variables
+ * because you can change they're values or change the type of data they point at.
  * 
- * 1.
- * 2.
+ * 1. The first thing you do is create a variable or declare it with a name, and the keywords, var,
+ * let or const.
+ * 2. The second part step is called assignment or initialization. This is when you assign a value to 
+ * the variable.
  */
 
 //Declaration

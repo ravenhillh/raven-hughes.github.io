@@ -96,7 +96,7 @@ return "Welcome " + newName + "!"
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-    //Should take an object with a name an a species and return '<Name> is a <Species>
+    //Should take an object with a name and a species and return '<Name> is a <Species>
     var newName 
     first = object["name"][0].toUpperCase();
           second = object["name"].slice(1);
@@ -113,7 +113,7 @@ function profileInfo(object) {
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
-
+//
 }
 
 //////////////////////////////////////////////////////////////////////
