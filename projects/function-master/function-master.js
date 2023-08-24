@@ -19,10 +19,13 @@ for (var key in object){
 function keysToString(object) {
 //create a variable to store string
 var str = ""
+var arr= []
 //create a loop to pull out values
 for (var key in object){
-    str += ([key] + " ")
-} return str
+    arr.push([key])
+} 
+str = arr.join(" ")
+return str
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -30,12 +33,16 @@ for (var key in object){
 //////////////////////////////////////////////////////////////////////
 
 function valuesToString(object) {
-    //create a variable to store string
+//take an object and return all its string values in a string each separated with a space
+//create a variable to store string
 var str = ""
+var arr= []
 //create a loop to pull out values
 for (var key in object){
-    str += (object[key] + " ")
-} return str
+    arr.push(object[key])
+} 
+str = arr.join(" ")
+return str
 }
 
 
@@ -113,8 +120,17 @@ function profileInfo(object) {
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
-//
+//Should take an object, if this object has a noises array return them as a string separated by a space
+var string = ""
+if (object.noises.length === 0 || object.hasOwnProperty("noises") === false){
+   //if there are no noises return 'there are no noises'
+    return "there are no noises"
+} else if (object.hasOwnProperty("noises") === true){
+    string = object.noises.join(" ")
+
+    } return string
 }
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 10 - Has Words ///////////////////////////////////////////
