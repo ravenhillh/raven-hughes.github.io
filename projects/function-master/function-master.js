@@ -39,7 +39,9 @@ var str = ""
 var arr= []
 //create a loop to pull out values
 for (var key in object){
+    if (typeof object[key] === "string"){
     arr.push(object[key])
+    }
 } 
 str = arr.join(" ")
 return str
@@ -75,13 +77,15 @@ function capitalizeWord(string) {
 function capitalizeAllWords(string) {
     //Should take a string of words and return a string with all the words capitalized
     myArray = string.split(" ")
+    newArray = []
     var newString = ""
     //loop thru array to pull words and capitolize
     for (var i = 0; i < myArray.length; i ++){
         first = myArray[i][0].toUpperCase();
         second = myArray[i].slice(1, string.length);
-        newString += first + second + " "
-    } return newString
+        newArray.push(first + second);
+    }   newString = newArray.join(" ");
+     return newString
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -137,7 +141,14 @@ if (object.noises.length === 0 || object.hasOwnProperty("noises") === false){
 //////////////////////////////////////////////////////////////////////
 
 function hasWord(string, word) {
-
+/*Should take a string of words and a word and return true if <word> is in <string of words>,
+ otherwise return false*/
+ var job = true
+ array12 = string.split(" ");
+ for (var i = 0; i < array12.length; i++){
+    if (array12[i] !== word){
+    }
+}  
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -145,7 +156,10 @@ function hasWord(string, word) {
 //////////////////////////////////////////////////////////////////////
 
 function addFriend (name, object) {
-
+/*Should take a name and an object and add the name to the object's
+ friends array then return the object*/
+ object.friends.push(name)
+ return object
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -153,16 +167,33 @@ function addFriend (name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) {
-
-}
+/*Should take a name and an object and return true if <name> is a friend of <object> and
+ false otherwise*/
+ if (object.friends[1] === name){
+    return true
+ } else return false
+} 
 
 //////////////////////////////////////////////////////////////////////
 // Function 13 - Non-Friends /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
+/*Should take a name and a list of people, and return a list of all the names that
+ <name> is not friends with*/
 
 function nonFriends(name, array) {
-
+    let array1 = []
+for (var i = 0 ; i < array.length; i ++){
+    array1.push(array[i]["name"])
 }
+for (var i = 0; i < array.length; i ++){
+    for (var key in i){
+        if (i[key] === name){
+
+        }
+    }
+}
+}
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 14 - Update Object ///////////////////////////////////////
