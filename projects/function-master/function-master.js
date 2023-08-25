@@ -125,8 +125,10 @@ function profileInfo(object) {
 
 function maybeNoises(object) {
 //Should take an object, if this object has a noises array return them as a string separated by a space
+//create a var to store the new strings
 var string = ""
-if (object.noises.length === 0 || object.hasOwnProperty("noises") === false){
+//check if object is empty or has empty array
+if (Object.keys(object).length === 0 || object.noises.length === 0 ){
    //if there are no noises return 'there are no noises'
     return "there are no noises"
 } else if (object.hasOwnProperty("noises") === true){
@@ -143,12 +145,10 @@ if (object.noises.length === 0 || object.hasOwnProperty("noises") === false){
 function hasWord(string, word) {
 /*Should take a string of words and a word and return true if <word> is in <string of words>,
  otherwise return false*/
- var job = true
- array12 = string.split(" ");
- for (var i = 0; i < array12.length; i++){
-    if (array12[i] !== word){
-    }
-}  
+//use .include to check if the word is in the string
+if (string.includes(word) === true){
+return true
+}  else return false
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -169,11 +169,13 @@ function addFriend (name, object) {
 function isFriend(name, object) {
 /*Should take a name and an object and return true if <name> is a friend of <object> and
  false otherwise*/
- if (object.friends[1] === name){
+ //use the includes method to check if name is in friends object
+ if (Object.keys(object).length === 0 || object.friends.includes(name) === false){
+    return false
+ } else if (object.friends.includes(name) === true){
     return true
- } else return false
 } 
-
+}
 //////////////////////////////////////////////////////////////////////
 // Function 13 - Non-Friends /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
@@ -181,17 +183,17 @@ function isFriend(name, object) {
  <name> is not friends with*/
 
 function nonFriends(name, array) {
-    let array1 = []
-for (var i = 0 ; i < array.length; i ++){
-    array1.push(array[i]["name"])
-}
-for (var i = 0; i < array.length; i ++){
-    for (var key in i){
-        if (i[key] === name){
-
-        }
+    //create a variable to return the nonfriends
+    let notFriends = []
+    //loop through each object and check if name is listed on the friends array
+ for (var i = 0; i < array.length; i ++){
+    if (array[i].name === name) {}
+   else if (array[i].friends.includes(name) === false){
+        notFriends.push(array[i].name)
     }
-}
+ } return notFriends
+
+
 }
 
 
@@ -200,7 +202,9 @@ for (var i = 0; i < array.length; i ++){
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-
+/*Should take an object, a key and a value. Should update the property <key> on <object> with new <value>. 
+If <key> does not exist on <object> create it.*/
+object.key = value
 }
 
 //////////////////////////////////////////////////////////////////////
