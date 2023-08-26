@@ -204,8 +204,15 @@ function nonFriends(name, array) {
 function updateObject(object, key, value) {
 /*Should take an object, a key and a value. Should update the property <key> on <object> with new <value>. 
 If <key> does not exist on <object> create it.*/
-object.key = value
-}
+//creating a copy to store a new version of object
+      let copiedObject = object;
+      //adding or changing the key and value
+        copiedObject[key] = value;
+        //reassigning the value of the old object to the new object
+          object = copiedObject;
+          return object
+    }
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 15 - Remove Properties ///////////////////////////////////
@@ -213,11 +220,14 @@ object.key = value
 
 function removeProperties(object, array) {
 //Should take an object and an array of strings. Should remove any properties on <object> that are listed in <array>
-for (var key in object){
-if(object[key] === array.includes([key])){
-    delete object[key]
-}
-} 
+let obj1 = object
+    for (var key in obj1){
+        if(obj1[key] === array.includes([key])){
+    obj1.splice(key, 1)
+    }
+        } 
+object = obj1;
+return object
 }
 //////////////////////////////////////////////////////////////////////
 // Function 16 - Dedup ///////////////////////////////////////////////
