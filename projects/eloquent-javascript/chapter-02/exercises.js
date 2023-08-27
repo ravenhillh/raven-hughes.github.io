@@ -8,9 +8,7 @@ function triangles() {
 //make a string variable to hold the values to be printed
 var triangle = ""
 //make a loop to generate and print the values
-//make a string var to represent the input number
-let abc = "abc"
-for (var i = 0; i < abc.length; i ++){
+for (var i = 0; i < 7; i ++){
   //make a statement to add values to variable a
   triangle += "#";
   console.log(triangle)
@@ -48,8 +46,29 @@ and still print "Fizz" or "Buzz" for numbers divisible by only one of those). */
 ////////////////////////////////////////////////////////////////////////////////
 
 function drawChessboard() {
-
-}
+  //writing a variable to store the characters
+  var chess = " "
+  //make a loop to count the lenght of the line and create newline 
+  for (var i = 0; i <= chess.length; i ++){
+  //check if the line is 8 or a factor of 8 long
+    if (chess.length % 8 === 0){
+    //start a new line
+    console.log("\n");
+      //loop to print the characters
+      for (var i = 0; i < 8; i ++){
+        //if it's an odd number than add a #
+        if (chess.length % 2 !== 0){
+        chess = chess + "#"
+        console.log(chess)
+          //if it's an even number than add a space
+      }   else if (chess.length % 2 === 0){
+        chess += " "
+        console.log(chess)
+      }
+    }    
+    } 
+  }
+  }
 
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////

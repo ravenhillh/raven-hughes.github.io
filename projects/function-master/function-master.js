@@ -219,22 +219,29 @@ If <key> does not exist on <object> create it.*/
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-//Should take an object and an array of strings. Should remove any properties on <object> that are listed in <array>
-let obj1 = object
-    for (var key in obj1){
-        if(obj1[key] === array.includes([key])){
-    obj1.splice(key, 1)
+    //Should take an object and an array of strings. Should remove any properties on <object> that are listed in <array>
+    for (var key in object){
+        //check if the object key exists on array
+        if (array.includes(key)){
+            //delete the property if so
+          delete object[key]
+        }
+      } 
     }
-        } 
-object = obj1;
-
-}
 //////////////////////////////////////////////////////////////////////
 // Function 16 - Dedup ///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+//Should take an array and return an array with all the duplicates removed
 function dedup(array) {
-
+//create a variable to store new array
+newArr = []
+//loop thru array to test if array values exist on new array var
+for (i = 0; i < array.length; i ++){
+//if they don't exist push them on
+    if(newArr.indexOf(array[i]) === -1){
+        newArr.push(array[i])
+    }
+} return newArr
 }
 
 //////////////////////////////////////////////////////////////////////
