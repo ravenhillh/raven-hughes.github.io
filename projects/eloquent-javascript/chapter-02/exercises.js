@@ -3,12 +3,12 @@
 // triangles ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function triangles() {
+function triangles(a) {
 //Write a loop that makes seven calls to console.log to output the following triangle
 //make a string variable to hold the values to be printed
 var triangle = ""
 //make a loop to generate and print the values
-for (var i = 0; i < 7; i ++){
+for (var i = 0; i < a; i ++){
   //make a statement to add values to variable a
   triangle += "#";
   console.log(triangle)
@@ -27,7 +27,7 @@ When you have that working, modify your program to print "FizzBuzz" for numbers 
 and still print "Fizz" or "Buzz" for numbers divisible by only one of those). */
 
   //writing a for loop to count from 1 to 100
-  for (var i = 1; i <= 100; i++){
+  for (var i = 1; i <= 15; i++){
   //writing an if-else if statement to print each output correctly
       if (i % 3 === 0 && i % 5 === 0){
           console.log("fizzbuzz")
@@ -45,30 +45,29 @@ and still print "Fizz" or "Buzz" for numbers divisible by only one of those). */
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function drawChessboard() {
+function drawChessboard(a) {
   //writing a variable to store the characters
-  var chess = " "
-  //make a loop to count the lenght of the line and create newline 
-  for (var i = 0; i <= chess.length; i ++){
-  //check if the line is 8 or a factor of 8 long
-    if (chess.length % 8 === 0){
-    //start a new line
-    console.log("\n");
-      //loop to print the characters
-      for (var i = 0; i < 8; i ++){
-        //if it's an odd number than add a #
+  function drawChessboard() {
+    //writing a variable to store the characters
+    var chess = " "
+    var size = 8
+    //make a loop to count the lenght of the line and create newline 
+    for (var i = 0; i <= size; i ++){
+    //check if the line is 8 or a factor of 8 long
+      for(var i = 0; i <= size; i ++){
         if (chess.length % 2 !== 0){
-        chess = chess + "#"
-        console.log(chess)
-          //if it's an even number than add a space
-      }   else if (chess.length % 2 === 0){
-        chess += " "
-        console.log(chess)
-      }
-    }    
+          //if chess is not even a hash
+          chess = chess + "#"
+          //if chess is even add a space
+      } else if (chess.length % 2 === 0){
+          chess += " "
     } 
+      }    if (chess % 8 === 0) {
+          chess += "\n"
+    } 
+      } console.log(chess)
   }
-  }
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
