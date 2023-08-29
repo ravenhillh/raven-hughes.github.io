@@ -47,27 +47,23 @@ and still print "Fizz" or "Buzz" for numbers divisible by only one of those). */
 
 function drawChessboard(a) {
   //writing a variable to store the characters
-  function drawChessboard() {
-    //writing a variable to store the characters
-    var chess = " "
-    var size = 8
-    //make a loop to count the lenght of the line and create newline 
-    for (var i = 0; i <= size; i ++){
-    //check if the line is 8 or a factor of 8 long
-      for(var i = 0; i <= size; i ++){
-        if (chess.length % 2 !== 0){
-          //if chess is not even a hash
-          chess = chess + "#"
-          //if chess is even add a space
-      } else if (chess.length % 2 === 0){
-          chess += " "
-    } 
-      }    if (chess % 8 === 0) {
-          chess += "\n"
-    } 
-      } console.log(chess)
-  }
-}
+var chess = " ";
+var size = a
+  //write a loop to move to the next line
+  for (var i = 0; i <= size; i ++){
+  //write a loop to modify the string value
+    for (var j = 0; j <= size; j++){
+         //if chess is not even a hash
+      if (chess.length % 2 !== 0){
+        chess += "#"
+          }else if (chess.length % 2 === 0){
+        chess += " "
+          }
+    } if (chess.length % 4 === 0){
+    chess += "\n" 
+  } console.log(chess)
+  } 
+  } 
 
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
