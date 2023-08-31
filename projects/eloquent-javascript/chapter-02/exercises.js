@@ -48,15 +48,14 @@ and still print "Fizz" or "Buzz" for numbers divisible by only one of those). */
 function drawChessboard(a) {
   //writing a variable to store the characters
 var chess = "";
-  for (var i = 0; i < a; i ++){
-  //write a loop to add newline^
+//write a loop to add newline
+  for (var i = 0; i < a ; i ++){
+  //inner loop to add characters to string
     for (var j = 0; j < a ; j++){
- //if chess is not even add a hash
-if (chess.length === 0){
+//if chess is even add a space
+if ((i + j) % 2 === 0 ){
         chess += " "
-   } else if (chess.length % 2 === 0){
-        chess += " "
-   }else if (chess.length % 2 !== 0) {
+   } else if ((i + j) % 2 !== 0) {
         chess += "#"
    }
     }

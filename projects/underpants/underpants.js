@@ -336,7 +336,6 @@ _.partition = function(array, func){
 _.map = function(collection, func){
     //let func = function(num){ return num * 10} // num = 2 => 20
     var nuArray1 = []
-
     if (Array.isArray(collection)){
         for (let i = 0; i < collection.length; i ++){
             //collection[i] => current
@@ -346,8 +345,7 @@ _.map = function(collection, func){
         for (var key in collection){
             nuArray1.push(func(collection[key], key, collection))
         }
-    }
-    return nuArray1
+    }return nuArray1
 }
 
 /** _.pluck
@@ -363,7 +361,8 @@ _.map = function(collection, func){
 _.pluck = function (array, property){
     //create a new array to return the values
     var newArray = _.map(array, function(value){
-        return array[property][value]
+        return value[property];
+        
     });
     return newArray
     
@@ -389,7 +388,9 @@ _.pluck = function (array, property){
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
+_.every = function (collection, func){
 
+}
 
 /** _.some
 * Arguments:
