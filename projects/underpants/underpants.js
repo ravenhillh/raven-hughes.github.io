@@ -360,7 +360,14 @@ _.map = function(collection, func){
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
-
+_.pluck = function (array, property){
+    //create a new array to return the values
+    var newArray = _.map(array, function(value){
+        return array[property][value]
+    });
+    return newArray
+    
+} 
 
 /** _.every
 * Arguments:
