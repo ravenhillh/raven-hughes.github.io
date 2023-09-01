@@ -3,7 +3,7 @@
 'use strict';
 
 var customers = require('./data/customers.json');
-var _ = require('underbar');
+var _ = require("underbar");
 
 /**
  * 1. Import your lodown module using the require() method,
@@ -70,7 +70,15 @@ var youngestCustomer = function(array){
 
 var averageBalance;
 
-var firstLetterCount;
+var firstLetterCount = function(array, char){
+    let letterCounter =_.reduce(array, function(accumulator, current){
+        
+        if (current.name[0] === char){
+            accumulator += 1
+        }
+        return accumulator
+    })
+}
 
 var friendFirstLetterCount;
 
