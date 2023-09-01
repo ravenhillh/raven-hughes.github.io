@@ -389,29 +389,34 @@ _.pluck = function (array, property){
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 _.every = function (collection, func){
-    
+    //no function is passed in
     if (func === undefined){
         for (let i = 0; i < collection.length; i ++){
             // if the items are truthy
             if (collection[i] == true) {
                 return true
             } else return false
-        }     
+        }   
+          //if an array is passed in
      } else if (Array.isArray(collection)){
         let isFalse = true
+        //loop thru array
         for (let i = 0; i < collection.length; i ++){
             //if the function returns a false value
             if (func(collection[i], i, collection) === false){
                 isFalse = false
-            } return isFalse 
-        } 
+            } 
+
+        } return isFalse 
+        //if an object is passed in
      } else if (typeof collection === 'object'){
         let isFalse2 = true
         for (var key in collection){
+            // check if the function returns a false value
             if (func(collection[key], key, collection) === false){
                 isFalse2 = false
-        } return isFalse2
-     }
+        }  
+     } return isFalse2
 }
 }
 
@@ -437,29 +442,35 @@ _.every = function (collection, func){
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 _.some = function (collection, func){
-    
+    //when the function is not passed a callback
     if (func === undefined){
         for (let i = 0; i < collection.length; i ++){
             // if the items are truthy
             if (collection[i] == true) {
                 return true
             } else return false
-        }     
+        }   
+        // if the collection is an array  
      } else if (Array.isArray(collection)){
-
+        let isTrue = false
+        //loop thru array to check boolean
         for (let i = 0; i < collection.length; i ++){
-            let isFalse = false
+           // check if the value returned is true
             if (func(collection[i], i, collection) === true){
-                isFalse = true
-            } return isFalse 
-        } 
+                isTrue = true
+                //if not return false
+            } 
+        } return isTrue
+        //if the collection is an object
      } else if (typeof collection === 'object'){
-        let isFalse2 = true
+        let isTrue2 = false
+        //loop thru the object
         for (var key in collection){
+            //check if the function returns true
             if (func(collection[key], key, collection) === true){
-                isFalse2 = true
-        } return isFalse2
-}
+                isTrue2 = true
+        } 
+} return isTrue2
 }
 }    
 /** _.reduce
