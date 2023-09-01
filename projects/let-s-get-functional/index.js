@@ -22,14 +22,51 @@ var _ = require('underbar');
  */
 
 var maleCount = function(array) {
-
+let males = _.filter(array, function(customer){
+    customer.gender === 'male'
+})
+return males.length
 };
 
-var femaleCount;
+var femaleCount = function(array){
+    let females = _.reduce(array, function(accumulator, current){
+        //accumulator = 0 | current = {Adele Mullin}
+        if (current.gender === 'female'){
+            accumulator += 1
+        }
+        return accumulator
+    })
+};
 
-var oldestCustomer;
+var oldestCustomer = function(array){
+    let oldest = _.reduce(array, function(accumulator, current){
+        //compare the age of accumulator and current
+        if (accumulator.age > current.age ){
+            // if the age is greater than set the output variable to that object
+            output = accumulator
+            //else set the variable to the currant object
+        } else {
+            output = current
+        }
+            //after the loop is done return the name value on the object with the greatest age
+        return output.name
+    })
+}
 
-var youngestCustomer;
+var youngestCustomer = function(array){
+    let youngest = _.reduce(array, function(accumulator, current){
+        //compare the age of accumulator and current
+        if (accumulator.age < current.age ){
+            // if the age is greater than set the output variable to that object
+            output = accumulator
+            //else set the variable to the currant object
+        } else {
+            output = current
+        }
+            //after the loop is done return the name value on the object with the greatest age
+        return output.name
+    })
+};
 
 var averageBalance;
 
