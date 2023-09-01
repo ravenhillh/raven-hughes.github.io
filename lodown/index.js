@@ -12,6 +12,95 @@ _.identity = function(value){
 module.exports.identity = identity
 
 /**
+ * typeOf: Designed to receive a value and return a string of what the data type is.
+ *
+ * @param {Value} : The value that will be tested for what type of data it is.
+ */
+_.typeOf = function(value){
+    if (typeof value === 'string'){
+        return "string"
+    } else if (value === null){
+        return "null"
+    } else if (Array.isArray(value) === true){
+        return 'array'
+    } else if (typeof value === 'object'){
+        return 'object'
+    } else if (typeof value === 'undefined'){
+        return "undefined"
+    } else if (typeof value === 'boolean'){
+        return "boolean"
+    } else if (typeof value === 'number'){
+        return "number"
+    } else if (typeof value === 'function'){
+        return "function"
+    }
+}
+module.exports.typeOf = typeOf
+
+/**
+ * first: Designed to receive an array and a number, and return the first however many items from the array equal to the input number.
+ * 
+ * @param {Array} : The array that the items will come from.
+ * @param {Number}: The number that designated how many items to return from the array.
+ */
+_.first = function(array, number){
+    //check if the array is an array
+    if (Array.isArray(array) === false){
+      return []   
+      //check if the number is a number
+    } else if (number === -1){
+        return []
+    } else if (typeof number !== 'number'){
+        return array[0]
+        //return the first <number> of variables using input number
+    } else {
+            return array.slice(0, number)
+     }
+    
+} 
+module.exports.first = first
+/**
+ * last: Designed to receive an array and a number, and return the last however many items from the array equal to the input number.
+ * 
+ * @param {Array} : The array that the items will come from.
+ * @param {Number}: The number that designated how many items to return from the array.
+ */
+_.last = function (array, number){
+    //check if array
+    if (Array.isArray(array) === false){
+        return [] 
+        //check if number
+    } else if (typeof number !== 'number'){
+        return array.pop()
+        //return the last <number> of items in array using input var
+    } else if(number > array.length){
+        return array
+    } else {
+        return array.slice(array.length - number)
+       } 
+        
+}
+module.exports.last = last
+/**
+ * indexOf: Designed to loop over a collection, Array or Object, and return the index that is
+ * the first occurance of the input value.
+ * 
+ * @param {Array or Object} collection: The collection over which to iterate.
+ * @param {Value} value: The value to search for in the collection and
+ * return the index of. 
+ */
+
+ _.indexOf = function(array, value){
+//write a loop to check if value is on array
+for (var i = 0; i < array.length; i ++){
+    if(array[i] === value){
+        return i
+    } 
+} return -1
+    
+} 
+module.exports.indexOf = indexOf
+/*
  * each: Designed to loop over a collection, Array or Object, and applies the 
  * action Function to each value in the collection.
  * 
