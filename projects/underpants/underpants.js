@@ -398,14 +398,21 @@ _.every = function (collection, func){
             } else return false
         }     
      } else if (Array.isArray(collection)){
-
+        let isFalse = true
         for (let i = 0; i < collection.length; i ++){
             //if the function returns a false value
-            if (func(collection[i], i, collection) !== true){
-                return false
-            } 
+            if (func(collection[i], i, collection) === false){
+                isFalse = false
+            } return isFalse 
         } 
-     } else return true 
+     } else if (typeof collection === 'object'){
+        let isFalse2 = true
+        for (var key in collection){
+            if (func(collection[key], key, collection) === false){
+                isFalse2 = false
+        } return isFalse2
+     }
+}
 }
 
 
@@ -430,9 +437,31 @@ _.every = function (collection, func){
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 _.some = function (collection, func){
+    
+    if (func === undefined){
+        for (let i = 0; i < collection.length; i ++){
+            // if the items are truthy
+            if (collection[i] == true) {
+                return true
+            } else return false
+        }     
+     } else if (Array.isArray(collection)){
 
+        for (let i = 0; i < collection.length; i ++){
+            let isFalse = false
+            if (func(collection[i], i, collection) === true){
+                isFalse = true
+            } return isFalse 
+        } 
+     } else if (typeof collection === 'object'){
+        let isFalse2 = true
+        for (var key in collection){
+            if (func(collection[key], key, collection) === true){
+                isFalse2 = true
+        } return isFalse2
 }
-
+}
+}    
 /** _.reduce
 * Arguments:
 *   1) An array
@@ -483,7 +512,11 @@ _.some = function (collection, func){
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
 // spread operator and assign
-
+_.extend = function (object1, object2, ...args){
+    
+    Object.assign(object1, object2, ...args)
+    return object1
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
