@@ -389,8 +389,25 @@ _.pluck = function (array, property){
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 _.every = function (collection, func){
+    
+    if (func === undefined){
+        for (let i = 0; i < collection.length; i ++){
+            // if the items are truthy
+            if (collection[i] == true) {
+                return true
+            } else return false
+        }     
+     } else if (Array.isArray(collection)){
 
+        for (let i = 0; i < collection.length; i ++){
+            //if the function returns a false value
+            if (func(collection[i], i, collection) !== true){
+                return false
+            } 
+        } 
+     } else return true 
 }
+
 
 /** _.some
 * Arguments:
@@ -412,7 +429,9 @@ _.every = function (collection, func){
 *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
+_.some = function (collection, func){
 
+}
 
 /** _.reduce
 * Arguments:
@@ -432,7 +451,22 @@ _.every = function (collection, func){
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
-
+ _.reduce = function (array, func, seed){
+    let output;
+    //determine if seed is undefines
+    if(seed === undefined){
+        output = array[0];
+        for (let i = 1; i < array.length; i ++){
+            output = func(output, array[i], i)
+        }
+    } else {
+         output = seed
+         for (let i = 0; i < array.length; i ++){
+            output = func(output, array[i], i)
+         }
+    }
+       return output
+ };
 
 /** _.extend
 * Arguments:
@@ -448,6 +482,8 @@ _.every = function (collection, func){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+// spread operator and assign
+
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
