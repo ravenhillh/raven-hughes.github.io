@@ -9,7 +9,7 @@
 _.identity = function(value){
     return value
 }
-module.exports.identity = identity
+module.exports.identity = identity;
 
 /**
  * typeOf: Designed to receive a value and return a string of what the data type is.
@@ -35,7 +35,7 @@ _.typeOf = function(value){
         return "function"
     }
 }
-module.exports.typeOf = typeOf
+module.exports.typeOf = typeOf;
 
 /**
  * first: Designed to receive an array and a number, and return the first however many items from the array equal to the input number.
@@ -58,7 +58,8 @@ _.first = function(array, number){
      }
     
 } 
-module.exports.first = first
+module.exports.first = first;
+
 /**
  * last: Designed to receive an array and a number, and return the last however many items from the array equal to the input number.
  * 
@@ -80,7 +81,8 @@ _.last = function (array, number){
        } 
         
 }
-module.exports.last = last
+module.exports.last = last;
+
 /**
  * indexOf: Designed to loop over a collection, Array or Object, and return the index that is
  * the first occurance of the input value.
@@ -99,7 +101,7 @@ for (var i = 0; i < array.length; i ++){
 } return -1
     
 } 
-module.exports.indexOf = indexOf
+module.exports.indexOf = indexOf;
 
 /**
  * contains: Designed to test an array for a value, using a ternary operator
@@ -109,10 +111,10 @@ module.exports.indexOf = indexOf
  * @param {Value} value: The value to search for in the collection and
  * return a boolean value for. 
  */
-.contains = function(array, value){
+_.contains = function(array, value){
     return array.includes(value) ? true : false
 }
-module.exports.contains = contains
+module.exports.contains = contains;
 
 /*
  * each: Designed to loop over a collection, Array or Object, and applies the 
@@ -134,6 +136,7 @@ function each(collection, action) {
     }
 }
 module.exports.each = each;
+
 /**
  * unique: Takes in an array and returns a new array with the duplicates
  * removed, using the .indexOf function
@@ -153,6 +156,7 @@ _.unique = function(array){
     } return newArr
     }
 module.exports.unique = unique
+
 /**
  * filter: Designed to take in an array and a function, and pass each element from the array
  * into the function and return an array with the elements for which calling the function returned true.
@@ -176,6 +180,7 @@ _.filter = function(array, func){
     return aRay
 }
 module.exports.filter = filter 
+
 /**
  * reject: Designed to take in an array and a function, and pass each element from the array
  * into the function and return an array with the elements for which calling the function returned false.
@@ -222,8 +227,8 @@ _.partition = function(array, func){
         }
     } return aRay3
 }
-
 module.exports.partition = partition; 
+
 /**
  * map: function takes in a collection and callback function. It returns a new array of the result of invoking the
  * callback on each item in the collection.
@@ -269,6 +274,7 @@ _.pluck = function (array, property){
     
 } 
 module.exports.pluck = pluck;
+
 /**
  * every: function takes in a collection and a function and passes each item to the function,
  * and returns true if all elements passed to the function resolved to true and false if just one returned false
@@ -310,6 +316,7 @@ _.every = function (collection, func){
 }
 }
 module.exports.every = every;
+
 /**
  * some: function takes in a collection and a function and passes each item to the function,
  * and returns true if at least one element passed to the function resolved to true and false if all returned false
@@ -352,6 +359,7 @@ _.some = function (collection, func){
 }
 } 
 module.exports.some = some;
+
 /**
  * reduce: function takes in an array, a function and a seed, it passes each element from the array into the function
  * and uses the return value as previous result for the next iteration, uses seed as the first input as the previous result.
@@ -378,4 +386,21 @@ _.reduce = function (array, func, seed){
     }
        return output
  };
- module.exports.reduce = reduce
+ module.exports.reduce = reduce;
+
+/**
+ * extend: function takes in two or more objects and copies the properties
+ * of the following objects into the first object.
+ * 
+ * @param {Object} collection: Function takes in multiple objects.
+ * @param {Function} action: function copies from objects two, three and so on, into first object.
+ * @returns {Object}: function returns the updated object one, with added properties.
+ * 
+ */
+
+ _.extend = function (object1, object2, ...args){
+    
+    Object.assign(object1, object2, ...args)
+    return object1
+}
+module.exports.extend = extend;
