@@ -23,19 +23,23 @@ var _ = require("underbar");
 
 var maleCount = function(array) {
 let males = _.filter(array, function(customer){
-    customer.gender === 'male'
+   if(customer.gender === 'male'){
+    return true
+   }
 })
 return males.length
 };
 
 var femaleCount = function(array){
     let females = _.reduce(array, function(accumulator, current){
-        //accumulator = 0 | current = {Adele Mullin}
+        //checking if the object at current index has a gender val equal to female
         if (current.gender === 'female'){
+            //if the value is true then adding 1 to the accumulator counter
             accumulator += 1
         }
         return accumulator
-    })
+    }, 0) 
+    return females
 };
 
 var oldestCustomer = function(array){
@@ -43,14 +47,15 @@ var oldestCustomer = function(array){
         //compare the age of accumulator and current
         if (accumulator.age > current.age ){
             // if the age is greater than set the output variable to that object
-            output = accumulator
+            output = current
             //else set the variable to the currant object
         } else {
-            output = current
+            output = accumulator
         }
             //after the loop is done return the name value on the object with the greatest age
         return output.name
-    })
+    }, )
+    return oldest
 }
 
 var youngestCustomer = function(array){
@@ -58,14 +63,15 @@ var youngestCustomer = function(array){
         //compare the age of accumulator and current
         if (accumulator.age < current.age ){
             // if the age is greater than set the output variable to that object
-            output = accumulator
+            let output = accumulator
             //else set the variable to the currant object
         } else {
             output = current
         }
             //after the loop is done return the name value on the object with the greatest age
         return output.name
-    })
+    }, young)
+    return youngest
 };
 
 var averageBalance;
@@ -78,6 +84,7 @@ var firstLetterCount = function(array, char){
         }
         return accumulator
     })
+    return letterCounter
 }
 
 var friendFirstLetterCount;
