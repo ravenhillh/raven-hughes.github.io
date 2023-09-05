@@ -45,49 +45,57 @@ var femaleCount = function(array){
 var oldestCustomer = function(array){
     let oldest = _.reduce(array, function(accumulator, current){
         //compare the age of accumulator and current
-        if (accumulator.age > current.age ){
+        if (current.age > accumulator.age){
             // if the age is greater than set the output variable to that object
-            output = current
+            return current
             //else set the variable to the currant object
         } else {
-            output = accumulator
+            return accumulator
         }
             //after the loop is done return the name value on the object with the greatest age
-        return output.name
-    }, )
-    return oldest
+        
+    })
+    return oldest.name
 }
 
 var youngestCustomer = function(array){
-    let youngest = _.reduce(array, function(accumulator, current){
+    let youngest  = _.reduce(array, function(accumulator, current){
         //compare the age of accumulator and current
-        if (accumulator.age < current.age ){
+        if (current.age < accumulator.age){
             // if the age is greater than set the output variable to that object
-            let output = accumulator
+            return current
             //else set the variable to the currant object
         } else {
-            output = current
+            return accumulator
         }
             //after the loop is done return the name value on the object with the greatest age
-        return output.name
-    }, young)
-    return youngest
-};
-
+        
+    })
+    return youngest.name
+}
 var averageBalance;
 
 var firstLetterCount = function(array, char){
     let letterCounter =_.reduce(array, function(accumulator, current){
         
-        if (current.name[0] === char){
+        if (current.name[0].toLowerCase() === char.toLowerCase()){
             accumulator += 1
         }
         return accumulator
-    })
+    }, 0)
     return letterCounter
 }
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(array, customer, letter){
+    let friendLetterCounter =_.filter(array, function(){
+        
+        if (customer.friends.name[0].toLowerCase() === letter.toLowerCase()){
+            return true
+            }
+        })
+        
+            return friendLetterCounter.length
+        };
 
 var friendsCount;
 
