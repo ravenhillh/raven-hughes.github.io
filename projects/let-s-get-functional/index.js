@@ -73,7 +73,18 @@ var youngestCustomer = function(array){
     })
     return youngest.name
 }
-var averageBalance;
+var averageBalance = function(array){
+    //Find the average balance of all customers
+let balance = _.map(array, function(array){
+    parseFloat(array.balance.replace(/$|,/, ""))
+})
+    let avg = 0;
+    balance.forEach(function(num){
+        avg += num
+    })
+    let final = (avg / balance.length)
+    return final
+}
 
 var firstLetterCount = function(array, char){
     let letterCounter =_.reduce(array, function(accumulator, current){
@@ -87,19 +98,26 @@ var firstLetterCount = function(array, char){
 }
 
 var friendFirstLetterCount = function(array, customer, letter){
-    let friendLetterCounter =_.filter(array, function(){
+    let friendLetterCounter =_.reduce(array, function(accumulator, current){
         
-        if (customer.friends.name[0].toLowerCase() === letter.toLowerCase()){
-            return true
-            }
-        })
-        
-            return friendLetterCounter.length
-        };
+        if (current.friends.name[0].toLowerCase() === letter.toLowerCase()){
+            accumulator += 1
+        }
+        return accumulator
+    }, 0)
+    return friendLetterCounter
+}
 
-var friendsCount;
+var friendsCount = function(array, name){
+//Find the customers' names that have a given customer's name in their friends list
+friends2 = _.filter(array, function(array){
+    if(array.friends.name === name) return true
+})
+return friends2
+}
+var topThreeTags = function(array){}
+    //Find the three most common tags among all customers' associated tags
 
-var topThreeTags;
 
 var genderCount;
 

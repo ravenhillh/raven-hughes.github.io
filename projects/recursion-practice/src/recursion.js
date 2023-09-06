@@ -4,7 +4,7 @@
 // denoted by n!, is the product of all positive integers less than or equal to n.
 // Example:  5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5);  // 120
-var factorial = function(n, product = 1) {
+var factorial = function(n) {
   //base
   if (n < 0){
     return null
@@ -27,15 +27,7 @@ var sum = function(array) {
     }
 
     return array[0] + sum(array.slice(1))
-  // false 
-      //recursion
-        // 1 + sum()
-          //false
-            //recursion
-              //1 + 2 + sum()
-                //False
-                  //recursion 
-                    //1 + 2 + 3 + sum()
+  
 
 };
 
