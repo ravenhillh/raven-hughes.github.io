@@ -75,8 +75,9 @@ var youngestCustomer = function(array){
 }
 var averageBalance = function(array){
     //Find the average balance of all customers
-let balance = _.map(array, function(array){
-    parseFloat(array.balance.replace(/$|,/, ""))
+let balance = _.map(array, function(customer){
+    //taking the balance and removing the other characters and turning it into a number
+    return parseFloat(customer.balance.replace(/[$||,]/g, ""))
 })
     let avg = 0;
     balance.forEach(function(num){

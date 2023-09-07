@@ -79,20 +79,37 @@ else if (n = 0){
     return 0
   }
   //recursion
-  return n - 1 + sumBelow(n - 1)
+  return n - sumBelow(n - 1)
  
 };
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
-var range = function(x, y) {
-  let nums = [];
-  if(x >= y){
+var range = function(x, y, nums = []) {
+  
+  if (x === y) return []
+  else if (x > y) {
+    if (x - 1 === y) return nums
+    nums.push(x - 1)
+    return range(x - 1, y, nums)
+  }
+  else if(x === y - 1){
 return nums
   }
   nums.push(x + 1)
-  return range(x + 1, y)
   
+  return range(x + 1, y , nums)
+  // 9,3 false
+  //recursion
+  //nums.push 8
+  //8,2 false
+  //recursion nums.push 7
+  //7,2, false
+  //recursion nums.push 6
+  //6,2 false
+  //recursion nums. push 5
+  //5,3 false
+  //recursion nums.push 4
 };
 
 // 7. Compute the exponent of a number.
@@ -118,15 +135,38 @@ return 1
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  //base
+
+if (n / 2 === 1 || n / 1 === 1){
+return true
+}
+else if (n / 2 === 0 || n / 0 === 0) return false
+  //recursion
+return powerOfTwo(n / 2)
 };
 
 // 9. Write a function that accepts a string a reverses it.
-var reverse = function(string) {
+var reverse = function(string, newString = "") {
+  //base
+  //if the length of the return variable equals the input string then return it
+if (newString.length === string.length) {
+return newString
+}
+//add the next last index character to string
+newString += string[string.length -1]
+  //recursion
+  //call the function again with last index sliced off
+return reverse(string.slice(-1), newString)
 };
+//false Racecar
+//recursion newString = lastindex(r)
+//false
+//recursion new string r a c e c a
+
 
 // 10. Write a function that determines if a string is a palindrome.
-var palindrome = function(string) {
-};
+function palindrome(string) {
+}
 
 // 11. Write a function that returns the remainder of x divided by y without using the
 // modulo (%) operator.
