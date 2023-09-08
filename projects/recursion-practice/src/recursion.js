@@ -68,6 +68,7 @@ else if (n - 2 === 0){
 // sumBelow(7); // 21
 var sumBelow = function(n) {
   //-values
+  
   if (n <= 0){
     //-base case
     if (n >= 0){
@@ -79,7 +80,7 @@ else if (n = 0){
     return 0
   }
   //recursion
-  return n - sumBelow(n - 1)
+  return n + sumBelow(n - 1)
  
 };
 
@@ -139,34 +140,29 @@ return powerOfTwo(n / 2)
 var reverse = function(string, newString = "") {
   //base
   //if the length of the return variable equals the input string then return it
-if (newString.length === string.length) {
+if (string.length === 0) {
 return newString
 }
 //add the next last index character to string
-newString += string[string.length -1]
+newString += string[string.length-1]
   //recursion
   //call the function again with last index sliced off
-return reverse(string.slice(-1), newString)
+return reverse(string.slice(-1, 1), newString)
 };
-//false Racecar
-//recursion newString = lastindex(r)
-//false
-//recursion new string r a c e c a
+
 
 
 // 10. Write a function that determines if a string is a palindrome.
-function palindrome(string, newString= "") {
+function palindrome(string) {
   //base racecar
-  if (string.length === 0){
+  if (string.length === 1){
     return true
+  }if (string.length === 2){
+    return string[0] === string[2]
+  }if (string[0] === string.slice(-1)){
+return palindrome(string.slice(1, -1))
   }
-  newString += string[string.length-1]
-  if (newString[newString.length-1] !== string[0]){
-    return false
-  } 
-  return palindrome(string.slice(0, string.length-1), newString)
-
-
+  return false
 }
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -214,32 +210,77 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
-};
+  //base case
 
+ if(str1.length === 0 && str2.length === 0) return true
+
+  //recursion
+if (str1[0] === str2[0]){
+  return compareStr(str1.slice(1), str2.slice(1))
+}
+return false
+};
+//false //recursion ouse,ouses false// recursion use uses false se ses false e es 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
-var createArray = function(str){
-};
+var createArray = function(str, letters= []){
+  if(str.length === 0){
+    return letters
+  }
+  letters.push(str[0])
+  return createArray(str.slice(1), letters)
+}; //
 
 // 17. Reverse the order of an array
-var reverseArr = function (array) {
+var reverseArr = function (array, newArray = []) {
+  //base case if array is 0 return new array
+if(array.length === 0){
+  return newArray
+}//recursion push array items backwards into new array
+newArray.push(array[array.length-1])
+return reverseArr(array.slice(0, -1), newArray)
+
+  //false 5 
 };
 
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
-var buildList = function(value, length) {
+var buildList = function(value, length, stuff =[]) {
+  //base case when array length equals length param
+if (stuff.length === length){
+  return stuff
+}
+  //recursion - add value to array and call again
+  stuff.push(value)
+  return buildList(value, length, stuff)
 };
 
 // 19. Count the occurence of a value inside a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
-var countOccurrence = function(array, value) {
+var countOccurrence = function(array, value, num = 0) {
+//base case - if array is gone
+if (array.length === 0){
+  return num
+}
+//recursion check if value is array element and increment
+if (array[0] === value){
+  num += 1
+}
+return countOccurrence(array.slice(1, array.length), value, num)
 };
 
 // 20. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
-var rMap = function(array, callback) {
+var rMap = function(array, callback, apples= []) {
+  //base case - when array is gone
+if(array.length === 0){
+  return apples
+}
+  //recursion write a function that performs something on each array element
+apples.push(callback(array[0]))
+return rMap(array.slice(1, array.length), callback, apples)
 };
 
 // 21. Write a function that counts the number of times a key occurs in an object.
@@ -266,8 +307,16 @@ var replaceKeysInObj = function(obj, key, newKey) {
 // Example:  0, 1, 1, 2, 3, 5, 8, 13, 21, 34.....
 // fibonacci(5);  // [0, 1, 1, 2, 3, 5]
 // Note:  The 0 is not counted.
-var fibonacci = function(n) {
-};
+var fibonacci = function(n, array = []) {
+  //base case - when n equal 0 return
+if (n < 2){
+  array.push(n)
+  return array
+} //push the values into array and then call function with n decremented
+ array.push(fibonacci(n - 1) + fibonacci(n - 2))
+return fibonacci(n - 1) + fibonacci(n - 2)
+  
+}; 
 
 // 25. Return the Fibonacci number located at index n of the Fibonacci sequence.
 // [0,1,1,2,3,5,8,13,21]
@@ -275,12 +324,22 @@ var fibonacci = function(n) {
 // nthFibo(7); // 13
 // nthFibo(3); // 2
 var nthFibo = function(n) {
+  //base
+
+  //recursion
 };
 
 // 26. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
 // capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
-var capitalizeWords = function(input) {
+var capitalizeWords = function(input, newArray =[]) {
+  //base
+if (input.length = 0){
+  return newArray
+}
+  //recursion
+  newArray.push(input[0].toUpperCase())
+  return capitalizeWords(input.slice(1, input.length), newArray)
 };
 
 // 27. Given an array of strings, capitalize the first letter of each index.

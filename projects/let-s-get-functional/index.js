@@ -99,28 +99,72 @@ var firstLetterCount = function(array, char){
 }
 
 var friendFirstLetterCount = function(array, customer, letter){
-    let friendLetterCounter =_.reduce(array, function(accumulator, current){
-        
-        if (current.friends.name[0].toLowerCase() === letter.toLowerCase()){
+    //Find how many friends of a given customer have names that start with a given letter
+    let count = array.reduce(function(accumulator, current){
+        //check if each friend starts with letter
+        if (current.name === customer) {
+            for (var i = 0 ; i < current.friends.length; i ++){
+                if (current.friends[i].name[0].toLowerCase() === letter.toLowerCase()){
             accumulator += 1
-        }
+            }
+        }  
+        
+        } 
+       
         return accumulator
-    }, 0)
-    return friendLetterCounter
+    }, 0);
+    return count
 }
-
 var friendsCount = function(array, name){
 //Find the customers' names that have a given customer's name in their friends list
-friends2 = _.filter(array, function(array){
-    if(array.friends.name === name) return true
-})
-return friends2
+let count = array.reduce(function(acc, curr){
+    //use a for loop to go thru tag arrays
+    for (let i = 0; i < curr.friends.length; i ++){
+if (curr.friends[i].name === name){
+acc.push(curr.name)
+} 
+    }  
+return acc 
+}, [])
+return count
 }
-var topThreeTags = function(array){}
-    //Find the three most common tags among all customers' associated tags
 
+var topThreeTags = function(array){
+    //use reduce to gather tag data
+   let count = array.reduce(function(acc, curr){
+        //use a for loop to go thru tag arrays
+        for (let i = 0; i < curr.tags.length; i ++){
+if (acc.hasOwnProperty(curr.tags[i])){
+    acc[curr.tags[i]] += 1;
+} else {
+    acc[curr.tags[i]] = 1;
+}
+        }  
+    return acc 
+    }, {})
+    //sorting the array to get top 3 tags
+ let array1 = Object.entries(count);
+ array1.sort(function(a, b){
+   return b[1] - a[1]
+ })
+    let top3 = []
+    top3.push(array1[0][0], array1[1][0], array1[2][0])
+return top3
+}
+    
 
-var genderCount;
+var genderCount = function(array){
+   let count = array.reduce(function(acc, curr,){
+if (acc.hasOwnProperty(curr.gender)){
+    acc[curr.gender] += 1
+} else {
+    acc[curr.gender] = 1
+}
+return acc
+
+    } , {})
+    return count
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
