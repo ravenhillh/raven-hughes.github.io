@@ -99,17 +99,7 @@ return nums
   nums.push(x + 1)
   
   return range(x + 1, y , nums)
-  // 9,3 false
-  //recursion
-  //nums.push 8
-  //8,2 false
-  //recursion nums.push 7
-  //7,2, false
-  //recursion nums.push 6
-  //6,2 false
-  //recursion nums. push 5
-  //5,3 false
-  //recursion nums.push 4
+  
 };
 
 // 7. Compute the exponent of a number.
@@ -120,7 +110,7 @@ return nums
 var exponent = function(base, exp) {
   //base case
   if (exp < 0){
-    return exp / exponent(base, exp) 
+    return base / exponent(base, exp +1) 
   }
   if(exp === 0){
 return 1
@@ -165,7 +155,18 @@ return reverse(string.slice(-1), newString)
 
 
 // 10. Write a function that determines if a string is a palindrome.
-function palindrome(string) {
+function palindrome(string, newString= "") {
+  //base racecar
+  if (string.length === 0){
+    return true
+  }
+  newString += string[string.length-1]
+  if (newString[newString.length-1] !== string[0]){
+    return false
+  } 
+  return palindrome(string.slice(0, string.length-1), newString)
+
+
 }
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -180,13 +181,25 @@ var modulo = function(x, y) {
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
 var multiply = function(x, y) {
+  if (x < 0 && y < 0){
+    
+    return x + multiply(x, y + 1)
+  }
+  if(y === 0){
+  return 0
+  }
+  return x + multiply(x, y - 1)
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
 // JavaScript's Math object.
 var divide = function(x, y) {
+  if (y === 0){
+    return 0
+  }
+  return y - x + divide(x, y-1)
 };
-
+///5 / 10 = .5
 // 14. Find the greatest common divisor (gcd) of two positive numbers.  The GCD of two
 // integers is the greatest integer that divides both x and y with no remainder.
 // Example:  gcd(4,36);  // 4
