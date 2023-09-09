@@ -67,23 +67,18 @@ else if (n - 2 === 0){
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
-  //-values
-  
-  if (n <= 0){
-    //-base case
-    if (n >= 0){
-      return 0
-    }
-      return n + 1 + sumBelow(n + 1)
-  }
-else if (n = 0){
+  //base case
+  if (n === 0){
     return 0
   }
+  if (n < 0){
+    return n + 1 + sumBelow(n + 1)
+  }
   //recursion
-  return n + sumBelow(n - 1)
+  return n - 1 + sumBelow(n-1)
  
 };
-
+//
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y, nums = []) {
@@ -109,15 +104,17 @@ return nums
 // Example:  exponent(4,3);  // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
-  //base case
-  if (exp < 0){
-    return base / exponent(base, exp +1) 
-  }
-  if(exp === 0){
-return 1
-  }
-  //recursion
-  return base * exponent(base, exp -1)
+  
+    //base case
+    if(exp === 0){
+  return 1
+    }
+    if (exp < 0){
+      return 1 / base * exponent(base, exp + 1) 
+    }
+    //recursion
+    return base * exponent(base, exp -1)
+  
   
 };
 
@@ -139,15 +136,11 @@ return powerOfTwo(n / 2)
 // 9. Write a function that accepts a string a reverses it.
 var reverse = function(string, newString = "") {
   //base
-  //if the length of the return variable equals the input string then return it
-if (string.length === 0) {
-return newString
-}
-//add the next last index character to string
-newString += string[string.length-1]
-  //recursion
-  //call the function again with last index sliced off
-return reverse(string.slice(-1, 1), newString)
+  if(string.length === 0){
+    return newString
+  }
+  newString += string[string.length -1]
+  return reverse(string.slice(0, string.length -1), newString)
 };
 
 
@@ -155,16 +148,18 @@ return reverse(string.slice(-1, 1), newString)
 // 10. Write a function that determines if a string is a palindrome.
 function palindrome(string) {
   //base racecar
+  string = string.toLowerCase().replace(" ", "")
+  
   if (string.length === 1){
     return true
-  }if (string.length === 2){
+  } if (string.length === 2){
     return string[0] === string[2]
-  }if (string[0] === string.slice(-1)){
+  } if (string[0] === string.slice(-1)){
 return palindrome(string.slice(1, -1))
   }
   return false
 }
-
+//
 // 11. Write a function that returns the remainder of x divided by y without using the
 // modulo (%) operator.
 // modulo(5,2) // 1
@@ -177,24 +172,24 @@ var modulo = function(x, y) {
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
 var multiply = function(x, y) {
-  if (x < 0 && y < 0){
-    
-    return x + multiply(x, y + 1)
-  }
-  if(y === 0){
+ 
+ if (y === 0){
   return 0
-  }
-  return x + multiply(x, y - 1)
-};
+ }
+ if (x < 0 || y < 0){
+  return -x + multiply(x, y + 1)
+ }
+ return x + multiply(x, y -1)
+}
 
 // 13. Write a function that divides two numbers without using the / operator  or
 // JavaScript's Math object.
-var divide = function(x, y) {
-  if (y === 0){
-    return 0
+function divide(x, y) {
+  if (y === 0) {
+    return 0;
   }
-  return y - x + divide(x, y-1)
-};
+  return y - x + divide(x, y - 1);
+}
 ///5 / 10 = .5
 // 14. Find the greatest common divisor (gcd) of two positive numbers.  The GCD of two
 // integers is the greatest integer that divides both x and y with no remainder.
@@ -334,17 +329,25 @@ var nthFibo = function(n) {
 // capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
 var capitalizeWords = function(input, newArray =[]) {
   //base
-if (input.length = 0){
+if (input.length === 0){
   return newArray
 }
   //recursion
   newArray.push(input[0].toUpperCase())
   return capitalizeWords(input.slice(1, input.length), newArray)
-};
+}; // 
 
 // 27. Given an array of strings, capitalize the first letter of each index.
 // capitalizeFirst(['car', 'poop', 'banana']); // ['Car', 'Poop', 'Banana']
-var capitalizeFirst = function(array) {
+var capitalizeFirst = function(array, newArray =[]) {
+   //base
+if (array.length === 0){
+  return newArray
+}
+  //recursion
+  newArray.push(array[0][0].toUpperCase() + array[0].slice(1, array[0].length))
+  return capitalizeFirst(array.slice(1, array.length), newArray)
+
 };
 
 // 28. Return the sum of all even numbers in an object containing nested objects.
