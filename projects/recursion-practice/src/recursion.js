@@ -110,7 +110,7 @@ var exponent = function(base, exp) {
   return 1
     }
     if (exp < 0){
-      return 1 / base * exponent(base, exp + 1) 
+      return parseFloat((1 / base * exponent(base, exp + 1)).toFixed(5)) 
     }
     //recursion
     return base * exponent(base, exp -1)
@@ -175,13 +175,14 @@ var multiply = function(x, y) {
  
  if (y === 0){
   return 0
- }
- if (x < 0 || y < 0){
-  return -x + multiply(x, y + 1)
- }
+ } if (x < 0 && y < 0){
+  return -(x - multiply(x, y + 1))
+ } else if (x < 0 || y < 0){
+  return x + multiply(x, y - 1)
+ } 
  return x + multiply(x, y -1)
 }
-
+// -2 - 2 
 // 13. Write a function that divides two numbers without using the / operator  or
 // JavaScript's Math object.
 function divide(x, y) {
@@ -319,10 +320,17 @@ return fibonacci(n - 1) + fibonacci(n - 2)
 // nthFibo(7); // 13
 // nthFibo(3); // 2
 var nthFibo = function(n) {
-  //base
-
+  if (n < 0) return null
+  if (n === 0) return 0
+  if (n < 2){
+    return n
+  } //push the values into array and then call function with n decremented
+  else {
+    return nthFibo(n-1) + nthFibo(n -2)
+  }
+   
   //recursion
-};
+};//false //3 
 
 // 26. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
@@ -394,7 +402,7 @@ var compress = function(list, newList = []) {
     return newList
   }
   //recursion
-  if (newList.includes(list[0])){
+  if (list[0] === list[1]){
   } else {
     newList.push(list[0])
   }
@@ -423,7 +431,17 @@ var alternateSign = function(array) {
 // 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
-var numToText = function(str) {
+var numToText = function(str, newString= "") {
+  if (str.length === 0){
+    return newString
+  } 
+  let arr = str.split(" ")
+  if (typeof Number(arr[0]) === NaN){
+    newString = newString + "" + arr[0]
+  } else {
+    newString = newString + " " + Number(arr[0])
+  }
+  return numToText(str.split("").slice(1, str.length -1).toString(), newString)
 };
 
 // *** EXTRA CREDIT ***
