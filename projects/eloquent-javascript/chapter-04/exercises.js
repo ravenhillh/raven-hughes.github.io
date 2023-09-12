@@ -4,16 +4,17 @@
 //Write a range function that takes two arguments, start and end, and 
 //returns an array containing all the numbers from start up to (and including) end.
 
-//function range(start, end, step = 1) {
-//let array = [];
-//if (start === end) return []
-//if (step < 0) return []
+function range(start, end, step = 1) {
+let array = [];
+
+if (start === end) return []
+if (step < 0) return []
 //for pos step
-//for (let i = start; i <= end; i ++){
- // array.push(i)
-//}
-//return array
-//}
+for (let i = start; i <= end; i += step){
+ array.push(i)
+}
+return array
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // sum /////////////////////////////////////////////////////////////////////////
@@ -43,18 +44,19 @@ return newArray
 // reverseArrayInPlace /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-//function reverseArrayInPlace(array) {
-//  let num 
-//for (var i = 0; i < (array.length); i ++){
-//  let num = array[i]
+function reverseArrayInPlace(array) {
+  //create a variable to hold the current value
+ let num ;
+for (var i = 0; i < Math.floor(array.length/2); i ++){
+ let num = array[i]
   //replace the first item in array with last item
-//  array[i] = array[array.length]
+ array[i] = array[array.length -1 - i]
   //replace the the last item in array with first
- // array[array.length] = num
+ array[array.length -1 -i] = num
   
-//}
-//return array
-//}
+}
+return array
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // arrayToList /////////////////////////////////////////////////////////////////
@@ -88,8 +90,9 @@ return listToArray(list.rest, array)
 ////////////////////////////////////////////////////////////////////////////////
 //Then add a helper function prepend, which takes an element and a list and creates
 // a new list that adds the element to the front of the input list
-function prepend(list, element) {
-let newList = list.value = element
+function prepend(element, list) {
+
+let newList = {value: element, rest: list}
 
 return newList
 }
