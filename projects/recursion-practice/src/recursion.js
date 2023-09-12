@@ -418,31 +418,66 @@ var augmentElements = function(array, aug) {
 // 33. Reduce a series of zeroes to a single 0.
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
-var minimizeZeroes = function(array) {
+var minimizeZeroes = function(array, newArray= []) {
+  //base case if array.length = 0
+  if(array.length === 0){
+    return newArray
+  }
+  //recursion
+  if (newArray[0] === undefined){
+newArray.push(array[0])
+  } else if (newArray[newArray.length - 1] === 0 && array[0] === 0){
+  } else {
+    newArray.push(array[0])
+  }
+  return minimizeZeroes(array.slice(1, array.length), newArray)
 };
 
 // 34. Alternate the numbers in an array between positive and negative regardless of
 // their original sign.  The first number in the index always needs to be positive.
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
-var alternateSign = function(array) {
+var alternateSign = function(array, newArray = [], count = 0) {
+   //base case if array.length = 0
+   if(array.length === count){
+    return newArray;
+  } // making the first element positive
+   if (count % 2 === 0){
+if (array[count] < 0) {
+  newArray.push(-(array[count]))
+} else newArray.push(array[count])
+   }
+if (count % 2 !== 0){
+  if (array[count] < 0) {
+    newArray.push(array[count])
+  } else newArray.push(-(array[count]))
+       }
+return alternateSign(array, newArray, count += 1)
+
+
 };
 
 // 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
 var numToText = function(str, newString= "") {
+    //create an array with all written num values at corr index
+    let nums = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+    //base case when string is 0
   if (str.length === 0){
-    return newString
-  } 
+    let string = newString.substring(0, newString.length-1)
+     return string 
+   } //put the array into a string
   let arr = str.split(" ")
-  if (typeof Number(arr[0]) === NaN){
-    newString = newString + "" + arr[0]
-  } else {
-    newString = newString + " " + Number(arr[0])
-  }
-  return numToText(str.split("").slice(1, str.length -1).toString(), newString)
-};
+    //if the current array value resolves to a number
+  if (isNaN(Number(arr[0]))) {
+    newString += arr[0] + " "
+    // the number to the string as a written number 
+   } else {  
+    newString += nums[Number(arr[0])] + " "
+   }
+   return numToText(str.split(" ").slice(1, str.length -1).join(" "), newString)
+   };
 
 // *** EXTRA CREDIT ***
 
