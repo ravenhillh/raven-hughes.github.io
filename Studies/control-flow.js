@@ -26,24 +26,23 @@
  * 
  */
 
+var array = [1, 2]
 //If statement
 var num = 1
 if (num < 5) {
     return true // returns true
-}
-//Else if statement
-var array = [1, 2]
+} 
+ //Else if statement
 else if(array.length > 5){
     return false        //returns false
 }
-
 //Else statement
 else {
     console.log("Hello") // Once the else statement is hit, logs Hello to the console
 }
 //Switch statement
 var num = 83
-Switch(num){
+Switch(num) {
     case 1: 
     console.log("Hey")
     break;
