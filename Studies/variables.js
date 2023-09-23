@@ -10,6 +10,12 @@
  * let or const.
  * 2. The second part step is called assignment or initialization. This is when you assign a value to 
  * the variable.
+ * 3. When you declare a variable you can use var, let or const. With var you declare a variable
+ * in the function scope or the global scope. With let or const, they are declared with block
+ * scope or global scope. With let and var you can reassign the value of a variable, with
+ * const the value can not be reassigned.
+ * 4. Hoisting is what happens when your code is executed. The computer pulls all function
+ * declarations and var declarations to the top of the code.
  */
 
 //Declaration
