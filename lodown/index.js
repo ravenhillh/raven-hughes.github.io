@@ -5,6 +5,7 @@
  * Identity: Designed to receive a value and return it unchanged
  * 
  * @param {Value} : The value that will be returned
+ * @return {Value}: The value that was passed in will be returned unchanged.
  */
 _.identity = function(value){
     return value
@@ -15,6 +16,7 @@ module.exports.identity = identity;
  * typeOf: Designed to receive a value and return a string of what the data type is.
  *
  * @param {Value} : The value that will be tested for what type of data it is.
+ * @return {value}: The function will return a string of the data type.
  */
 _.typeOf = function(value){
     if (typeof value === 'string'){
@@ -42,6 +44,8 @@ module.exports.typeOf = typeOf;
  * 
  * @param {Array} : The array that the items will come from.
  * @param {Number}: The number that designated how many items to return from the array.
+ * @return {Array}: Returns an array of values equal the input number, or if the input number
+ * is not a number, return the first index. If the number is negative return an empty array.
  */
 _.first = function(array, number){
     //check if the array is an array
@@ -65,6 +69,8 @@ module.exports.first = first;
  * 
  * @param {Array} : The array that the items will come from.
  * @param {Number}: The number that designated how many items to return from the array.
+ * @return {Array}: The function returns an array of the last input number of items, 
+ * or if the input number is not a number, it returns the last value of the array.
  */
 _.last = function (array, number){
     //check if array
@@ -90,6 +96,8 @@ module.exports.last = last;
  * @param {Array or Object} collection: The collection over which to iterate.
  * @param {Value} value: The value to search for in the collection and
  * return the index of. 
+ * @return {number}: The function returns a number of the index where the value first is seen.
+ * 
  */
 
  _.indexOf = function(array, value){
@@ -110,6 +118,8 @@ module.exports.indexOf = indexOf;
  * @param {Array} collection: The collection to check in for a value.
  * @param {Value} value: The value to search for in the collection and
  * return a boolean value for. 
+ * @return {Boolean}: The function will return a boolean, saying if the value occurs
+ * on the array.
  */
 _.contains = function(array, value){
     return array.includes(value) ? true : false
@@ -143,6 +153,7 @@ module.exports.each = each;
  * 
  * @param {Array} collection: The collection to go through and return values with
  * duplicates removed.
+ * @return {Array}: The function returns a new array with all the duplicates removed.
  * 
  */
 _.unique = function(array){
@@ -206,12 +217,15 @@ module.exports.filter = filter
 module.exports.reject = reject 
  
 /**
- * partition: function takes in an array and callback function. It returns a new array, with two subarrays, one containing values for which the 
+ * partition: function takes in an array and callback function. It returns a new array, 
+ * with two subarrays, one containing values for which the 
  * function returned something truthy, and one for values that were falsy
  * 
  * @param {Array or Object} collection: Function takes in an array as a collection.
- * @param {Function} func: Function takes in a callback function.
- * @returns {Array}: Function returns a new array with two subarrays.
+ * @param {Function} func: Function takes in a callback function, which tests each input value
+ * for truthiness.
+ * @returns {Array}: Function returns a new array with two subarrays, one array containing
+ * values that were truthy and another for falsey.
  * 
  */
 _.partition = function(array, func){
@@ -281,7 +295,8 @@ module.exports.pluck = pluck;
  * 
  * @param {Array} collection: Function takes in a collection and loops thru each item.
  * @param {Function} action: function checks each item and returns a boolean.
- * @returns {boolean}: function returns a boolean value.
+ * @returns {boolean}: function returns a boolean value of true if every value is true, and
+ * false otherwise.
  * 
  */
 _.every = function (collection, func){
@@ -323,7 +338,8 @@ module.exports.every = every;
  * 
  * @param {Array} collection: Function takes in a collection and loops thru each item.
  * @param {Function} action: function checks each item and returns a boolean.
- * @returns {boolean}: function returns a boolean value.
+ * @returns {boolean}: function returns a boolean value of true if at least one value returns
+ * true and false if none return true.
  * 
  */
 _.some = function (collection, func){
@@ -366,7 +382,10 @@ module.exports.some = some;
  * 
  * 
  * @param {Array} collection: Function takes in an array and loops thru each item.
- * @param {Function} action: function checks each item, comparing the current value with the previous.
+ * @param {Function} action: function takes in the current item and the previous result
+ * and accumulates a return value.
+ * @param {Seed}: Function takes the seed value and uses it as input for the first iteration
+ * of the function.
  * @returns {value}: function returns a value from the final function call.
  * 
  */
