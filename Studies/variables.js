@@ -13,9 +13,10 @@
  * 3. When you declare a variable you can use var, let or const. With var you declare a variable
  * in the function scope or the global scope. With let or const, they are declared with block
  * scope or global scope. With let and var you can reassign the value of a variable, with
- * const the value can not be reassigned.
+ * const the value cannot be reassigned.
  * 4. Hoisting is what happens when your code is executed. The computer pulls all function
- * declarations and var declarations to the top of the code.
+ * declarations and variables to the top of the code. Let and const declarations
+ * are hoisted but not initialized, which means they cannot be used until they're declared.
  */
 
 //Declaration
@@ -34,3 +35,24 @@ console.log(myDog) //prints Burt to the console
 
 var myDog = "Sally"
 console.log(myDog) // logs Sally to the console 
+
+//var, let, const
+
+var myCat = "buddy"
+var myCat = "Buster"
+console.log(myCat) // logs Buster to the console, because var was redeclared
+
+let myName = "Raven"
+let myName = "Ray" // It will not allow this, since let vars cannot be declared again
+
+const lastName = "Hughes"
+lastName = "Smith"
+console.log(lastName) // logs Hughes to the console, because you cannot reassign const
+
+//Hoisting
+add(3, 5)   //returns 8, since function declarations are hoisted they can be invoked before
+            //they are declared
+
+function add(x, y){
+    return x + y
+}
