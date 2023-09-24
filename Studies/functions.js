@@ -76,6 +76,14 @@ let number = minus(10)
 console.log(number)                 //logs 5 to the console, because the the variable in the function is accessed
 console.log(a)                      //logs 20 to the console, because it is not reaching inside the function scope
 
+let greet = "hi"
+function hey(){
+    console.log(greet)              //logs hi to the console, reaching outside to the global scope
+}
+
+
+
+
 //Closure 
 function breadRecipe(flour){
     let salt = .01
